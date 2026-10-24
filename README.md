@@ -2,48 +2,81 @@
 
 [![Daily CTF Streak](https://img.shields.io/badge/Daily%20Streak-Active%20🔥-orange.svg)](#-daily-activity-log)
 [![Challenges Solved](https://img.shields.io/badge/Challenges%20Solved-1-brightgreen.svg)](#-daily-activity-log)
+[![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](requirements.txt)
+[![Architecture Decisions](https://img.shields.io/badge/ADRs-Documented-purple.svg)](docs/decisions/README.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-> A dedicated repository documenting my daily journey of tackling Capture The Flag (CTF) challenges across cryptography, forensics, reverse engineering, binary exploitation, web security, and general Linux/scripting skills.
+> A dedicated, reproducible repository documenting my daily journey of tackling Capture The Flag (CTF) challenges across cryptography, forensics, reverse engineering, binary exploitation, web security, and Linux foundations. Every challenge includes an in-depth writeup, educational takeaways, and an automated standalone solver script.
+
+---
+
+## 📑 Table of Contents
+
+- [🧭 Category Navigation](#-category-navigation)
+- [⚡ Quick Start & Environment Setup](#-quick-start--environment-setup)
+- [🛠️ Tooling & Command Reference](#-tooling--command-reference)
+- [📅 Daily Activity Log](#-daily-activity-log)
+- [📂 Repository Architecture](#-repository-architecture)
+- [🏛️ Architecture Decision Records (ADRs)](#️-architecture-decision-records-adrs)
+- [🤝 Standards & Contributing Guide](#-standards--contributing-guide)
+- [🎯 Target Platforms](#-target-platforms)
+- [⚖️ License & Ethical Disclaimer](#️-license--ethical-disclaimer)
 
 ---
 
 ## 🧭 Category Navigation
 
-| Category | Description | Index & Cheatsheet |
+| Category | Primary Focus & Attack Vectors | Track Index & Playbook |
 |---|---|:---:|
-| 🛠️ **General Skills** | Linux shell, CLI piping, encoding/decoding, regex, scripting | [View Category](general-skills/README.md) |
-| 🔐 **Cryptography** | Classical ciphers, RSA, AES, ECC, PRNGs, math-based attacks | [View Category](cryptography/README.md) |
-| 🔎 **Forensics** | PCAP analysis, file carving, memory dumps, steganography | [View Category](forensics/README.md) |
-| 🌐 **Web Exploitation** | XSS, SQLi, SSRF, SSTI, authentication bypass, IDOR, deserialization | [View Category](web-exploitation/README.md) |
-| 🔄 **Reverse Engineering** | Disassembly, decompilation, binary patching, static & dynamic analysis | [View Category](reverse-engineering/README.md) |
-| 💥 **Binary Exploitation** | Buffer overflows, ROP chains, format strings, heap exploitation | [View Category](binary-exploitation/README.md) |
+| 🛠️ **General Skills** | Linux shell mastery, regex, piping, binary/hex/base conversions, CLI automation | [Explore Category](general-skills/README.md) |
+| 🔐 **Cryptography** | Classical ciphers, modular arithmetic, RSA, AES, ECC, PRNG predictability | [Explore Category](cryptography/README.md) |
+| 🔎 **Forensics** | PCAP network analysis, memory forensics, file carving, steganography | [Explore Category](forensics/README.md) |
+| 🌐 **Web Exploitation** | SQLi, XSS, SSRF, SSTI, authentication/JWT flaws, IDOR, deserialization | [Explore Category](web-exploitation/README.md) |
+| 🔄 **Reverse Engineering** | Disassembly, decompilation, binary patching, bytecode (.NET/Java/Python), dynamic debugging | [Explore Category](reverse-engineering/README.md) |
+| 💥 **Binary Exploitation** | Buffer overflows, ret2libc, ROP chains, format strings, heap exploitation | [Explore Category](binary-exploitation/README.md) |
 
 ---
 
-## ⚡ Quick Start: Adding Today's Challenge
+## ⚡ Quick Start & Environment Setup
 
-We maintain a built-in helper script to scaffold today's challenge files, writeup markdown, and solver script with one command:
+### 1. Prerequisites
+- **Python 3.10+**
+- **Git**
+- Optional (for pwn & reversing): Linux environment or **WSL2** (Windows Subsystem for Linux)
 
+### 2. Clone Repository & Setup Virtual Environment
 ```bash
-# General syntax:
-python scripts/new_challenge.py -c <category> -n "<challenge_name>" -p "<platform>" -d "<difficulty>"
+# Clone the repository
+git clone https://github.com/MARCAAAAARRON/ctf_for_everyone.git
+cd ctf_for_everyone
 
-# Example:
-python scripts/new_challenge.py -c crypto -n "Caesar 101" -p picoCTF -d Easy
+# Create and activate a Python virtual environment
+python -m venv venv
+
+# On Linux / macOS / WSL:
+source venv/bin/activate
+
+# On Windows (PowerShell):
+.\venv\Scripts\Activate.ps1
+
+# Install core dependencies
+pip install -r requirements.txt
 ```
 
-This automatically:
-1. Creates `<category>/<platform>-<challenge-name>/`
-2. Generates a pre-filled `README.md` writeup template
-3. Generates a boilerplate `solve.py` script
-4. Adds a ready entry into the **Daily Activity Log** below!
+---
 
-### Commit & Push Workflow
+## 🛠️ Tooling & Command Reference
+
+| Action | Command | Description |
+|---|---|---|
+| **Scaffold New Challenge** | `python scripts/new_challenge.py -c <category> -n "<name>" -p "<platform>" -d "<difficulty>"` | Creates directory, template writeup, solver, and registers entry in tracker |
+| **Run Daily Challenge Solver** | `python cryptography/day_1_cryp_rot/solve.py` | Executes challenge-specific standalone Python solver |
+| **Test Scaffolder (Dry Run)** | `python scripts/new_challenge.py -c crypto -n "Test Challenge" --test` | Runs scaffolding verification without mutating root tracker |
+| **Interactive ROT Tool** | `python cryptography/day_1_cryp_rot/rot.py` | Interactive shift and substitution utility |
+
+### Scaffolding Example:
 ```bash
-git add .
-git commit -m "feat(crypto): solve picoCTF Caesar 101"
-git push origin main
+python scripts/new_challenge.py -c crypto -n "Caesar 101" -p picoCTF -d Easy --points 100
 ```
 
 ---
@@ -57,37 +90,71 @@ git push origin main
 
 ---
 
-## 📂 Repository Structure
+## 📂 Repository Architecture
 
 ```text
 CTF_for_everyone/
-├── .gitignore
-├── README.md                      # Repository dashboard & activity log
+├── .gitignore                         # Excludes compiled bytecode, virtual environments, large dumps
+├── LICENSE                            # MIT License
+├── README.md                          # Repository dashboard, activity log, quickstart
+├── requirements.txt                   # Shared Python dependencies
+├── docs/
+│   └── decisions/                     # Architecture Decision Records (ADRs)
+│       ├── README.md                  # Index of ADRs
+│       ├── 0001-repository-architecture-and-category-taxonomy.md
+│       └── 0002-reproducible-writeup-and-solver-standards.md
 ├── templates/
-│   └── challenge-template.md      # Standard writeup structure
+│   └── challenge-template.md          # Standard writeup structure
 ├── scripts/
-│   └── new_challenge.py           # Scaffolding tool for daily challenges
-├── general-skills/                # Linux, shell, encoding, regex
-├── cryptography/                  # Ciphers, RSA, math, hash breaking
-├── forensics/                     # PCAPs, disk carving, memory, stego
-├── web-exploitation/              # Web apps, APIs, injections
-├── reverse-engineering/           # Static & dynamic binary analysis
-└── binary-exploitation/           # Pwn, ROP, memory corruption
+│   └── new_challenge.py               # Scaffolding tool for daily challenges
+├── general-skills/                    # Linux CLI, encoding, regex, shell automation
+├── cryptography/                      # Classical ciphers, RSA, AES, math, PRNGs
+├── forensics/                         # PCAPs, memory dumps, disk carving, steganography
+├── web-exploitation/                  # Web applications, APIs, injections, bypasses
+├── reverse-engineering/               # Static decompilation, dynamic debugging, bytecode
+└── binary-exploitation/               # Pwn, memory corruption, ROP, heap exploitation
 ```
+
+---
+
+## 🏛️ Architecture Decision Records (ADRs)
+
+We record significant architectural choices to maintain codebase consistency and preserve technical context. For detailed rationale and trade-offs, see [docs/decisions/README.md](docs/decisions/README.md):
+
+- [**ADR-001: Repository Architecture and Category Taxonomy**](docs/decisions/0001-repository-architecture-and-category-taxonomy.md) — Explains the domain-first taxonomy, folder hierarchies, and CLI categorization aliases.
+- [**ADR-002: Reproducible Writeup and Standalone Solver Standards**](docs/decisions/0002-reproducible-writeup-and-solver-standards.md) — Mandates the writeup format, mathematical rigor, and automated, non-interactive `solve.py` scripts.
+
+---
+
+## 🤝 Standards & Contributing Guide
+
+When adding or updating challenge writeups, adhere to the following quality standards:
+
+1. **Scaffold with Automation:** Always generate the skeleton via `python scripts/new_challenge.py`.
+2. **Deterministic Solvers:** Every `solve.py` script must execute without human intervention and output `[+] Flag recovered: <flag>`.
+3. **No Secret Leaks:** Do not commit proprietary binaries or private platform VPN tokens.
+4. **Git Commit Convention:** Use Conventional Commits:
+   ```bash
+   git add .
+   git commit -m "feat(crypto): solve HTB Academy ROT13 writeup and solver"
+   git push origin main
+   ```
 
 ---
 
 ## 🎯 Target Platforms
 
+- [Hack The Box & HTB Academy](https://www.hackthebox.com/)
 - [picoCTF](https://play.picoctf.org/)
-- [Hack The Box](https://www.hackthebox.com/)
 - [TryHackMe](https://tryhackme.com/)
-- [OverTheWire](https://overthewire.org/wargames/)
-- [Cryptohack](https://cryptohack.org/)
+- [CryptoHack](https://cryptohack.org/)
+- [OverTheWire Wargames](https://overthewire.org/wargames/)
 - [pwnable.kr](https://pwnable.kr/) / [pwnable.tw](https://pwnable.tw/)
 
 ---
 
-## ⚖️ License & Disclaimer
+## ⚖️ License & Ethical Disclaimer
 
-All writeups and exploit scripts in this repository are created strictly for educational purposes, defensive learning, and authorized CTF practice.
+This repository is distributed under the [MIT License](LICENSE). 
+
+All writeups, exploit payloads, and solver scripts are developed exclusively for educational purposes, defensive security research, and authorized Capture The Flag practice. Unauthorized testing against systems without prior written consent is strictly illegal.

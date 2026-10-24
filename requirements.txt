@@ -1,0 +1,20 @@
+# CTF Python Dependencies and Tooling
+# Core & General
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+tqdm>=4.66.0
+
+# Cryptography
+pycryptodome>=3.20.0
+cryptography>=42.0.0
+sympy>=1.12
+
+# Binary Exploitation / Reverse Engineering
+# Note: On Windows, pwntools works under WSL2 or cygwin/mingw for full functionality
+pwntools>=4.11.0; sys_platform != "win32"
+ropper>=1.13.8
+
+# Forensics & File Carving
+scapy>=2.5.0
+pypdf>=4.0.0
+pillow>=10.2.0
