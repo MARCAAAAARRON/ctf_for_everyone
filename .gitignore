@@ -48,3 +48,6 @@ scratch/
 *.zip
 *.7z
 !templates/
+
+.agents/
+skills-lock.json
