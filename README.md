@@ -1,7 +1,7 @@
 # 🚩 Daily CTF Journey & Solutions
 
 [![Daily CTF Streak](https://img.shields.io/badge/Daily%20Streak-Active%20🔥-orange.svg)](#-daily-activity-log)
-[![Challenges Solved](https://img.shields.io/badge/Challenges%20Solved-0-brightgreen.svg)](#-daily-activity-log)
+[![Challenges Solved](https://img.shields.io/badge/Challenges%20Solved-1-brightgreen.svg)](#-daily-activity-log)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 > A dedicated repository documenting my daily journey of tackling Capture The Flag (CTF) challenges across cryptography, forensics, reverse engineering, binary exploitation, web security, and general Linux/scripting skills.
@@ -53,8 +53,7 @@ git push origin main
 | Date | Platform | Challenge Name | Category | Difficulty | Flag Status |
 |:---:|:---:|---|:---:|:---:|:---:|
 <!-- ACTIVITY_LOG_START -->
-
-*(Challenges solved each day will appear here automatically when running the scaffolder script)*
+| 2026-10-24 | HTB Academy | [ROT13](cryptography/day_1_cryp_rot/README.md) | Cryptography | Very Easy | Solved ✅ |
 
 ---
 

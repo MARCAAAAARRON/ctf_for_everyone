@@ -18,4 +18,4 @@ Focuses on classic ciphers (Caesar, Vigenère, Substitution, XOR, Transposition)
 | Date | Platform | Challenge Name | Difficulty | Writeup Link |
 |---|---|---|---|---|
 <!-- CHALLENGE_LIST_START -->
-<!-- Solved challenges in this category will be indexed here -->
+| 2026-10-24 | HTB Academy | [ROT13](day_1_cryp_rot/README.md) | Very Easy | [Writeup](day_1_cryp_rot/README.md) |
