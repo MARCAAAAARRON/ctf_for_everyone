@@ -1,0 +1,50 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments & Dependencies
+.env
+.venv/
+env/
+venv/
+ENV/
+node_modules/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Exploit & Debugging artifacts
+core
+core.*
+gdb.history
+.gdb_history
+pedalog
+peda-session-*
+.pwntools-cache/
+
+# Large binary & capture files (>50MB-100MB risk for GitHub)
+# (Keep small sample PCAPs and challenge files, ignore huge system dumps)
+*.iso
+*.vmdk
+*.vdi
+*.vmem
+*.raw
+*.mem
+*.dmp
+*.core
+
+# Temporary challenge downloads & extracted archives
+tmp/
+scratch/
+*.tar.gz
+*.zip
+*.7z
+!templates/
