@@ -63,7 +63,8 @@ A practical guide and solution directory focused on essential Linux shell naviga
 | Date | Platform | Challenge Name | Difficulty | Key Technique | Writeup Link |
 |---|---|---|---|---|---|
 <!-- CHALLENGE_LIST_START -->
-<!-- Solved challenges in this category will be indexed here -->
+| 2026-10-25 | picoCTF | [Base Conversion (0x3D)](day_1_genskill_base/README.md) | Easy | Hexadecimal to Decimal Positional Radix | [Writeup](day_1_genskill_base/README.md) |
+| 2026-10-25 | picoCTF | [Bases (Base64)](day_2_genskill_bases/README.md) | Easy | Binary-to-Text Base64 Decoding | [Writeup](day_2_genskill_bases/README.md) |
 
 ---
 

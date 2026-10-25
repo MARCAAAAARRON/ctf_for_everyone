@@ -1,7 +1,7 @@
 # 🚩 Daily CTF Journey & Solutions
 
 [![Daily CTF Streak](https://img.shields.io/badge/Daily%20Streak-Active%20🔥-orange.svg)](#-daily-activity-log)
-[![Challenges Solved](https://img.shields.io/badge/Challenges%20Solved-1-brightgreen.svg)](#-daily-activity-log)
+[![Challenges Solved](https://img.shields.io/badge/Challenges%20Solved-3-brightgreen.svg)](#-daily-activity-log)
 [![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](requirements.txt)
 [![Architecture Decisions](https://img.shields.io/badge/ADRs-Documented-purple.svg)](docs/decisions/README.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -86,6 +86,8 @@ python scripts/new_challenge.py -c crypto -n "Caesar 101" -p picoCTF -d Easy --p
 | Date | Platform | Challenge Name | Category | Difficulty | Flag Status |
 |:---:|:---:|---|:---:|:---:|:---:|
 <!-- ACTIVITY_LOG_START -->
+| 2026-10-25 | picoCTF | [Bases (Base64)](general-skills/day_2_genskill_bases/README.md) | General Skills | Easy | Solved ✅ |
+| 2026-10-25 | picoCTF | [Base Conversion (0x3D)](general-skills/day_1_genskill_base/README.md) | General Skills | Easy | Solved ✅ |
 | 2026-10-24 | HTB Academy | [ROT13](cryptography/day_1_cryp_rot/README.md) | Cryptography | Very Easy | Solved ✅ |
 
 ---
